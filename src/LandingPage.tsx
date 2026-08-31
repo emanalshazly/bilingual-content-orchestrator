@@ -39,7 +39,7 @@ export default function LandingPage({ onLaunch }: { onLaunch: () => void }) {
                 </span>
               </h1>
               <p className="text-lg md:text-xl text-zinc-400 mb-10 leading-relaxed">
-                An AI-powered pipeline that transforms a single product brief into a complete, culturally-tuned marketing campaign in both English and Arabic.
+                An AI-assisted pipeline that turns one product brief into structured English and Arabic campaign drafts for human review.
               </p>
               <div className="flex items-center justify-center gap-4">
                 <button
@@ -56,8 +56,8 @@ export default function LandingPage({ onLaunch }: { onLaunch: () => void }) {
           <div className="grid md:grid-cols-3 gap-6 mb-24">
             <FeatureCard 
               icon={<Languages className="w-6 h-6 text-blue-400" />}
-              title="Culturally Tuned"
-              description="Beyond translation. Adapts pacing, dialect (MSA, Gulf, Levantine), and cultural references for MENA audiences."
+              title="Adaptation-Aware"
+              description="Requests MSA-first adaptation, pacing, register decisions, and RTL notes; native review remains required."
               delay={0.1}
             />
             <FeatureCard 
@@ -68,8 +68,8 @@ export default function LandingPage({ onLaunch }: { onLaunch: () => void }) {
             />
             <FeatureCard 
               icon={<ShieldCheck className="w-6 h-6 text-green-400" />}
-              title="Automated QA"
-              description="Built-in Brand Voice Review and Quality Evaluator agents ensure every piece meets publication standards."
+              title="Advisory Review"
+              description="Built-in model reviewers flag possible issues; they do not certify publication quality."
               delay={0.3}
             />
           </div>
