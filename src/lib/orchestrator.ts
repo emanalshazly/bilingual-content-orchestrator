@@ -1,6 +1,9 @@
 import { GoogleGenAI } from "@google/genai";
 import * as schemas from "./schemas";
 import { PROMPTS } from "./prompts";
+import { validatePipelineInputs, type PipelineInputs } from "./contracts";
+
+export { validatePipelineInputs, type PipelineInputs } from "./contracts";
 
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
@@ -32,14 +35,6 @@ export interface PipelineOutputs {
   arVideo?: any;
   brandReview?: any;
   qualityEval?: any;
-}
-
-export interface PipelineInputs {
-  productBrief: string;
-  brandGuidelines: string;
-  previousExamplesEN: string;
-  previousExamplesAR: string;
-  seoKeywords: string;
 }
 
 async function runAgent(
@@ -74,6 +69,7 @@ export async function reRunAgent(
   updateStatus: (agent: keyof PipelineState, status: AgentStatus) => void,
   updateOutput: (agent: keyof PipelineOutputs, data: any) => void
 ) {
+  validatePipelineInputs(inputs);
   const model = "gemini-3-flash-preview";
   updateStatus(agentId, "running");
 
@@ -176,6 +172,7 @@ export async function executePipeline(
   updateStatus: (agent: keyof PipelineState, status: AgentStatus) => void,
   updateOutput: (agent: keyof PipelineOutputs, data: any) => void
 ) {
+  validatePipelineInputs(inputs);
   const model = "gemini-3-flash-preview"; // Fast and supports structured output well
 
   try {
